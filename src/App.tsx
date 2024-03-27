@@ -9,7 +9,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Register/>}></Route>
-
       <Route path="/app" element={<LayoutPage/>}>
         <Route path="/app/category-list" element={<Category/>}/>
       </Route>

@@ -62,7 +62,7 @@ const Register: React.FC = () => {
     
 
     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-      <Button type="primary" htmlType="submit" style={{width:330}}>
+      <Button className='bg-cyan-400 text-white font-bold' htmlType="submit" style={{width:330}}>
         Submit
       </Button>
     </Form.Item>
