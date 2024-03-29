@@ -10,9 +10,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Register/>}></Route>
       <Route path="/app" element={<LayoutPage/>}>
-        <Route path="/app/category-list" element={<Category/>}/>
+        <Route path="/app" element={<Category/>}/>
+        <Route path="create-category" element={<CreateCategory/>}/>
       </Route>
-        <Route path="/app/create-category" element={<CreateCategory/>}/>
     </Routes>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 import '../layout/layout.scss'
 import {
   MenuFoldOutlined,
@@ -8,7 +9,7 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
-import Category from './../category/Category';
+// import Category from './../category/Category';
 
 const { Header, Sider, Content } = Layout;
 
@@ -23,28 +24,11 @@ const LayoutPage: React.FC = () => {
         <Layout>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'Category List',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'Sub Category List',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'Brand List',
-            },
-          ]}
-        />
+        <Menu className='flex flex-col gap-4  text-lg' theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <NavLink to={'/app'}><UserOutlined /> Category List</NavLink>
+          <NavLink to={'/'}><VideoCameraOutlined /> Sub Category List</NavLink>
+          <NavLink to={'/'}><UploadOutlined /> Brand List</NavLink>
+        </Menu>
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
@@ -69,7 +53,7 @@ const LayoutPage: React.FC = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          <Category/>
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
