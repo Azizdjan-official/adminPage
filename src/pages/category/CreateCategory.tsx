@@ -16,7 +16,7 @@ const items: TabsProps['items'] = [
   {
     key: '2',
     label: 'Sub Category',
-    children: 'Content of Tab Pane 2',
+    children: <CreateForm/>,
   },
 ];
 

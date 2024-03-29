@@ -25,7 +25,6 @@ const CreateForm: React.FC = () => {
     mutate(formData, {
       onSuccess: () => {
         navigate("/app")
-        
       }
   })
   };

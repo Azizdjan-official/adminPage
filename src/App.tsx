@@ -3,6 +3,7 @@ import Register from './pages/login/Login';
 import LayoutPage from './pages/layout/Layout';
 import Category from './pages/category/Category';
 import CreateCategory from './pages/category/CreateCategory';
+import EditCategory from './pages/EditCategory';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Route path="/app" element={<LayoutPage/>}>
         <Route path="/app" element={<Category/>}/>
         <Route path="create-category" element={<CreateCategory/>}/>
+        <Route path="edit-category/:id" element={<EditCategory/>}/>
       </Route>
     </Routes>
   )
