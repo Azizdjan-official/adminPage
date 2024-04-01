@@ -6,6 +6,7 @@ import EditCategory from './pages/EditCategory';
 import CreateCategory from "./pages/category/CreateCategory";
 import SubCategory from './pages/subcategory/Subcategory';
 import CreateSubCategory from "./pages/subcategory/CreateSubCategory";
+import Attribute from "./pages/attribute/Attribute";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="edit-category/:id" element={<EditCategory/>}/>
         <Route path="subcategory" element={<SubCategory/>}/>
         <Route path="create-subcategory" element={<CreateSubCategory/>}/>
+        <Route path="attribute" element={<Attribute/>}/>
       </Route>
     </Routes>
   )

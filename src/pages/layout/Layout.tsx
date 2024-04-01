@@ -25,6 +25,7 @@ const LayoutPage: React.FC = () => {
           <NavLink to={'/app'}><UserOutlined /> Category List</NavLink>
           <NavLink to={'/app/subcategory'}><VideoCameraOutlined /> Sub Category List</NavLink>
           <NavLink to={'/'}><UploadOutlined /> Brand List</NavLink>
+          <NavLink to={'/app/attribute'}><VideoCameraOutlined /> Attribute</NavLink>
           <NavLink to={'/'}><UploadOutlined /> Product</NavLink>
         </Menu>
       </Sider>

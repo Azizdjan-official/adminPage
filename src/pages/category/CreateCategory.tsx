@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, type FormProps, type TabsProps, type UploadFile } from 'antd';
+import { Tabs, type TabsProps, type UploadFile } from 'antd';
 import CreateForm from './CreateForm';
 import { useNavigate } from 'react-router-dom';
 import { usePostCreateForm } from './service/mutation/usePostCreateForm';
