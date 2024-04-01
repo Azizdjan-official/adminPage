@@ -1,50 +1,65 @@
 import React, { useState } from 'react';
-import { Button, Form, type FormProps, Input } from 'antd';
+import { Button, Form,  Input } from 'antd';
 import type { UploadFile, UploadProps } from 'antd';
 import {  Upload } from 'antd';
-import { usePostCreateForm } from './service/mutation/usePostCreateForm';
-import { useNavigate } from 'react-router-dom';
+// import { usePostCreateForm } from './service/mutation/usePostCreateForm';
+// import { useNavigate } from 'react-router-dom';
+interface CategoryType {
+  id:number,
+  title:string,
+  image?:{
+    file: File,
+    fileList:UploadFile,
+  },
+  parent:{id:number,title:string}
+}
 
 
 
-const CreateForm: React.FC = () => {
 
+
+interface CategoryformProps {
+  onFinish: (data: CategoryType) => void;
+  isPending:boolean;
+  initialValues?:{
+    title?:string,
+    image?:string,
+  }
+}
+
+const CreateForm: React.FC<CategoryformProps> = ({onFinish,initialValues}) => {
   type FieldType = {
     title: string;
     image: {
       file:File;
     };
   };
-  const navigate = useNavigate();
-  const {mutate} = usePostCreateForm();
+  // const navigate = useNavigate();
+  // const {mutate} = usePostCreateForm();
   
-  const onFinish: FormProps<FieldType>["onFinish"] = (data:any) => {
-    const formData = new FormData();
-    formData.append("title", data.title)
-    formData.append("image", data.image.file)
-    mutate(formData, {
-      onSuccess: () => {
-        navigate("/app")
-      }
-  })
-  };
+  // const onFinish: FormProps<FieldType>["onFinish"] = (data:any) => {
+  //   const formData = new FormData();
+  //   formData.append("title", data.title)
+  //   formData.append("image", data.image.file)
+    
+  //   mutate(formData, {
+  //     onSuccess: () => {
+  //       navigate("/app")
+  //     }
+  // })
+  // };
   
-  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
+  // const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
+  //   console.log('Failed:', errorInfo);
+  // };
    
-  const [fileList, setFileList] = useState<UploadFile[]>([]);
-
-
+    const [fileList, setFileList] = useState<UploadFile[]>([]);
     const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) =>
         setFileList(newFileList);
     
-
-    
-    
     return (
       <Form name="basic" labelCol={{ span: 8 }} wrapperCol={{ span: 16 }} style={{ maxWidth: 600 }}
-      initialValues={{ remember: true }} onFinish={onFinish} onFinishFailed={onFinishFailed} autoComplete="off">
+      initialValues={initialValues} onFinish={onFinish} autoComplete="off">
     <Form.Item<FieldType> label="Title" name="title"
     rules={[{ required: true, message: 'Please input your username!'}]}>
       <Input />
@@ -68,7 +83,7 @@ const CreateForm: React.FC = () => {
 
     
     <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-      <Button className='border bg-cyan-400 text-white '  htmlType="submit">
+      <Button className='border bg-cyan-400 text-white' htmlType="submit">
         Send
       </Button>
     </Form.Item>

@@ -1,14 +1,13 @@
 import React from 'react';
-import { useGetCategory } from './service/query/useGetCategory';
 import { Link, LinkProps } from 'react-router-dom';
+import { useGetSubCategory } from './service/query/useGetSubCategory';
 
     
-const Category: React.FC = () => {
-    const { data } = useGetCategory();
+const SubCategory: React.FC = () => {
+    const { data } = useGetSubCategory();
     const res = data?.results;
-    console.log(res);
     const linkProps: LinkProps = {
-      to: '/app/create-category', 
+      to: '/app/create-subcategory', 
       children: 'Create',
       className: 'bg-cyan-400 text-white font-bold px-4 py-2 rounded-md my-2',
     };
@@ -37,4 +36,4 @@ const Category: React.FC = () => {
       </div>
       )}
 
-export default Category;
+export default SubCategory;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Tabs, type FormProps, type TabsProps, type UploadFile } from 'antd';
-import CreateForm from './CreateForm';
+import { Tabs, type TabsProps, type UploadFile } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { usePostCreateForm } from './service/mutation/usePostCreateForm';
+import { usePostCreateForm } from './../category/service/mutation/usePostCreateForm';
+import CreateForm from './../category/CreateForm';
 
 
 type FieldType = {
@@ -16,25 +16,13 @@ type FieldType = {
 };
 
 
-const CreateCategory: React.FC = () => {
+const CreateSubCategory: React.FC = () => {
 
 const onChange = (key: string) => {
   console.log(key);
 };
 const navigate = useNavigate();
 const {mutate} = usePostCreateForm();
-const onFinish = (data:FieldType) => {
-  const formData = new FormData();
-  formData.append("title", data.title)
-  if(data.image)
-  formData.append("image", data.image.file)
-  
-  mutate(formData, {
-    onSuccess: () => {
-      navigate("/app")
-    }
-})
-};
 
 const onSubFinish = (data:FieldType) => {
   const formData = new FormData();
@@ -44,19 +32,15 @@ const onSubFinish = (data:FieldType) => {
   
   mutate(formData, {
     onSuccess: () => {
-      navigate("/app")
+      navigate("/app/subcategory")
     }
 })
 };
 
 const items: TabsProps['items'] = [
+
 {
   key: '1',
-  label: 'Create',
-  children: <CreateForm onFinish={onFinish} isPending />,
-},
-{
-  key: '2',
   label: 'Sub Category',
   children: <CreateForm onFinish={onSubFinish} isPending />,
 },
@@ -64,4 +48,4 @@ const items: TabsProps['items'] = [
 
 return <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
 }
-export default CreateCategory;
+export default CreateSubCategory;
